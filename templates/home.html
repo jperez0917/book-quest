@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+  <p><a href="{% url 'logout' %}">Log Out</a></p>
+{% else %}
+    <p>Please log in</p>
+    <a href="{% url 'login' %}">Log In</a> |
+    <a href="{% url 'signup' %}">Sign Up</a>
+{% endif %}
+
+{% comment %} <h1>Book Quest</h1>
+        <label for="value">Name of book:</label>
+        <select id="value" name="value" v-model="selectedType">
+            <option value="title">Title</option>
+        </select>
+        <input @keyup.enter="userSearch" type="text" placeholder="Search" v-model="userText"></input>
+        <button @click="userSearch">Submit</button>
+
+        <div class="container">
+            <ol v-if="Object.keys(userResults.docs).length">
+                <li v-for="item in userResults.docs" :key="item.key">
+                    <h2> {{ item.title }} </h2>
+                    <h4> by{{item.author_name}} </h4>
+                    <hr>
+
+                    <div class="img" v-for="insideIsbn in item.isbn" :key="insideIsbn">
+                        <p><a :href="`https://openlibrary.org/isbn/${insideIsbn}`" target="_blank">
+                                <img :src="`https://covers.openlibrary.org/b/isbn/${insideIsbn}-M.jpg`" /></a></p>
+                        <br> {% endcomment %}
+
+{% comment %} <div id="app">
+  <h1>Book Quest</h1>
+  <label for="value">Name of book:</label>
+  <select id="value" name="value" v-model="selectedType">
+      <option value="title">Title</option>
+  </select>
+  <input @keyup.enter="userSearch" type="text" placeholder="Search" v-model="userText"></input>
+  <button @click="userSearch">Submit</button>
+
+  <div class="container">
+      <ol v-if="Object.keys(userResults.docs).length">
+          <li v-for="item in userResults.docs" :key="item.key">
+              <h2> {{ item.title }} </h2>
+              <h4> by{{item.author_name}} </h4>
+              <hr>
+
+              <div class="img" v-for="insideIsbn in item.isbn" :key="insideIsbn">
+                  <p><a :href="`https://openlibrary.org/isbn/${insideIsbn}`" target="_blank">
+                          <img :src="`https://covers.openlibrary.org/b/isbn/${insideIsbn}-M.jpg`" /></a></p>
+                  <br>
+              </div> {% endcomment %}
+{% endblock %}
