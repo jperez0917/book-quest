@@ -11,27 +11,28 @@
           <select id="value" name="value" v-model="selectedType">
               <option value="title">Title</option>
               <option value="author">Author</option>
+              <option value="subject">Subject</option>
           </select>
           <input @keyup.enter="userSearch" type="text" placeholder="Search" v-model="userText"></input>
           <button @click="userSearch">Submit</button>
+          <button @click="titleSearch">TitleSearch</button>
 
           <div class="container">
               <ol v-if="Object.keys(userResults.docs).length">
                   <li v-for="item in userResults.docs" :key="item.key">
                       <h2> [[ item.title ]] </h2>
                       <h4 v-for="author in item.author_name"> by [[author]] </h4>
-                      <button @click="userSave">Save</button>
+                      <button @click="userSave(item)">Save</button>
 
 
                       <hr>
 
-                      <div class="img" v-for="insideIsbn in item.isbn" :key="insideIsbn">
-                          <p><a :href="`https://openlibrary.org/isbn/${insideIsbn}`" target="_blank">
+                      <div class="img">
+                          <p v-for="insideIsbn in item.isbn" :key="insideIsbn"><a :href="`https://openlibrary.org/isbn/${insideIsbn}`" target="_blank">
                               <img :src="`https://covers.openlibrary.org/b/isbn/${insideIsbn}-M.jpg`" /></a></p>
-                          <br>
                       </div>
 
-                    </li>
+                   </li>
                 </ol>
             </div>
 {% else %}
@@ -46,6 +47,7 @@
     </select>
     <input @keyup.enter="userSearch" type="text" placeholder="Search" v-model="userText"></input>
     <button @click="userSearch">Submit</button>
+    <button @click="titleSearch">TitleSearch</button>
 
     <div class="container">
         <ol v-if="Object.keys(userResults.docs).length">
