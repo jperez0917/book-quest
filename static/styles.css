@@ -8,10 +8,33 @@ body {
     background-color: white;
 }
 
+h1 {
+    font-family: 'Permanent Marker', cursive;
+    padding-left: 15px;
+}
+
+h2 {
+    font-family: 'Source Serif Pro', serif;
+
+}
+
+a {
+    font-family: 'Source Serif Pro', serif;
+}
 
 .img {
     display: flex;
     flex-wrap: wrap;
+}
+
+.img p {
+
+    margin: 25px;
+}
+
+
+.checked {
+    color: orange;
 }
 
 /* p {

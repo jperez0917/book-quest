@@ -35,13 +35,14 @@ var app = new Vue({
             }).then(response => this.userSave())
         },
         ////////////////////////////////////////////////////////////////////////////
+        // for testing purposes
         titleSearch: function () {
             let params = {}
-            params['title'] = 'better angels of our nature'
-            console.log('BRUCE IS THE BEST!!!!', params['title'])
+            params['title'] = 'thief of souls'
+            console.log(params['title'])
             axios({
                 method: 'get',
-                url: 'http://openlibrary.org/search.json?limit=2',
+                url: 'http://openlibrary.org/search.json?limit=5',
                 params: params
             }).then(response => {
                 console.log('this is the response.data', response.data)
@@ -73,7 +74,7 @@ var app = new Vue({
 
         },
 
-        userSave: function (book) {
+        userSave: function (book, isbn) {
             axios({
                 method: 'post',
                 url: '/api/v1/books/',
@@ -84,6 +85,7 @@ var app = new Vue({
 
                     "title": book.title,
                     "author": book.author_name,
+
 
                 }
 

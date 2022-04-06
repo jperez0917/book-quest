@@ -4,9 +4,9 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-  Hi {{ user.username }}!
-  <p><a href="{% url 'logout' %}">Log Out</a></p>
   <h1>Book Quest</h1>
+  Welcome {{ user.username }}
+  <p><a href="{% url 'logout' %}">Log Out</a></p>
           <label for="value">Name of book:</label>
           <select id="value" name="value" v-model="selectedType">
               <option value="title">Title</option>
@@ -22,28 +22,42 @@
                   <li v-for="item in userResults.docs" :key="item.key">
                       <h2> [[ item.title ]] </h2>
                       <h4 v-for="author in item.author_name"> by [[author]] </h4>
-                      <button @click="userSave(item)">Save</button>
 
 
                       <hr>
 
-                      <div class="img">
-                          <p v-for="insideIsbn in item.isbn" :key="insideIsbn"><a :href="`https://openlibrary.org/isbn/${insideIsbn}`" target="_blank">
-                              <img :src="`https://covers.openlibrary.org/b/isbn/${insideIsbn}-M.jpg`" /></a></p>
-                      </div>
+                    <div class="img">
+                        <p v-for="insideIsbn in item.isbn" :key="insideIsbn"><a :href="`https://openlibrary.org/isbn/${insideIsbn}`" target="_blank">
+                            <img :src="`https://covers.openlibrary.org/b/isbn/${insideIsbn}-M.jpg`" /></a> <br><a :href="`https://openlibrary.org/isbn/${insideIsbn}`" target="_blank"> [[item.title]]</a>
+                            <br>   <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <br> <button @click="userSave(item, insideIsbn)">Save to Shelf</button> 
+                            
+                        </p>
+                        <br>
+                    </div>
 
                    </li>
                 </ol>
             </div>
+            
+
+
+
 {% else %}
-    <p>Please log in</p>
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <h1>Book Quest</h1>
     <a href="{% url 'login' %}">Log In</a> |
     <a href="{% url 'signup' %}">Sign Up</a>
-    <h1>Book Quest</h1>
-    <label for="value">Name of book:</label>
+    <label for="value">Search for a book by:</label>
     <select id="value" name="value" v-model="selectedType">
               <option value="author">Author</option>
               <option value="title">Title</option>
+              <option value="subject">Subject</option>
+
     </select>
     <input @keyup.enter="userSearch" type="text" placeholder="Search" v-model="userText"></input>
     <button @click="userSearch">Submit</button>
@@ -52,16 +66,16 @@
     <div class="container">
         <ol v-if="Object.keys(userResults.docs).length">
             <li v-for="item in userResults.docs" :key="item.key">
-                <!-- <h2>  {{item.title}} </h2> -->
+            
                 <h2> [[item.title]] </h2>
                       <h4 v-for="author in item.author_name"> by [[author]] </h4>
-                <!-- <h4> by [[item.author_name]] </h4> -->
                 <hr>
 
-                <div class="img" v-for="insideIsbn in item.isbn" :key="insideIsbn">
-                    <p><a :href="`https://openlibrary.org/isbn/${insideIsbn}`" target="_blank">
-                        <img :src="`https://covers.openlibrary.org/b/isbn/${insideIsbn}-M.jpg`" /></a></p>
+                <div class="img">
+                    <p v-for="insideIsbn in item.isbn" :key="insideIsbn"><a :href="`https://openlibrary.org/isbn/${insideIsbn}`" target="_blank">
+                        <img :src="`https://covers.openlibrary.org/b/isbn/${insideIsbn}-M.jpg`" /></a> <br><a :href="`https://openlibrary.org/isbn/${insideIsbn}`" target="_blank"> [[item.title]]</a></p>
                     <br>
+                    
                 </div>
             </li>
         </ol>
