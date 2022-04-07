@@ -6,7 +6,7 @@ var app = new Vue({
         userResults: {},
         userText: "",
         selectedType: "",
-        isbn: [],
+        // isbn: [],
         userSaves: [],
         csrf_token: "",
         numberOfIsbn: 2,
@@ -32,6 +32,7 @@ var app = new Vue({
 
                     "name": this.createName,
                 }
+
             }).then(response => this.userSave())
         },
         ////////////////////////////////////////////////////////////////////////////
@@ -85,13 +86,18 @@ var app = new Vue({
 
                     "title": book.title,
                     "author": book.author_name,
-
-
+                    "isbn": isbn,
+                    "author": [],
+                    "subject": []
                 }
 
-            }).then(response => this.userSaves = response.data),
+            }).then(response => {
+                this.userSaves = response.data
+
                 alert("you have saved an entry")
-            console.log('here it is', this.userSaves)
+                console.log('here it is', this.userSaves)
+
+            })
 
         }
 
@@ -117,6 +123,9 @@ var app = new Vue({
 
     created: function () {
         this.userSearch()
+    },
+    mounted: function () {
+        this.csrf_token = document.querySelector("input[name=csrfmiddlewaretoken]").value
     }
 
 })
