@@ -30,3 +30,9 @@ class SubjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Subject
         fields = ('subject', 'author_name')
+
+# class UserSerializer(serializers.ModelSerializer):
+#     posts_detail = NestedAuthorSerializer(many=True, read_only=True, source='posts')
+#     class Meta: 
+#         model = get_user_model()
+#         fields = ('id', 'username', 'posts', 'posts_detail')

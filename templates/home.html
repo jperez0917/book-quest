@@ -4,10 +4,9 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-  <h1>Book Quest</h1>
   Welcome {{ user.username }}
-  <p><a href="{% url 'logout' %}">Log Out</a></p>
-          <label for="value">Name of book:</label>
+  <p><a href="{% url 'logout' %}">Log Out</a> |  <a href="{% url 'shelf' %}">MyShelf</a></p>
+          <label for="value">Search for a book by:</label>
           <select id="value" name="value" v-model="selectedType">
               <option value="title">Title</option>
               <option value="author">Author</option>
@@ -49,7 +48,7 @@
 
 {% else %}
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////// -->
-    <h1>Book Quest</h1>
+    {% comment %} <h1>Book Quest</h1> {% endcomment %}
     <a href="{% url 'login' %}">Log In</a> |
     <a href="{% url 'signup' %}">Sign Up</a>
     <label for="value">Search for a book by:</label>

@@ -24,5 +24,6 @@ urlpatterns = [
     path("api/v1/", include('api.urls')),
     path("users/", include("users.urls")),
     path("users/", include("django.contrib.auth.urls")),
-    path('bookquest/', include('bookquest.urls'))
+    # path('bookquest/', include('bookquest.urls')),
+    path("bookquest/", TemplateView.as_view(template_name="shelf.html"), name="shelf"),
 ]
