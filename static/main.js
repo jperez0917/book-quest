@@ -10,6 +10,8 @@ var app = new Vue({
         userSaves: [],
         csrf_token: "",
         numberOfIsbn: 2,
+        subjects: ["python", "javascript", "html", "sci-fi"],
+        subjectResults: {},
 
 
     },
@@ -64,6 +66,7 @@ var app = new Vue({
         userSearch: function () {
             let params = {}
             params[this.selectedType] = this.userText
+            console.log(`this is userSearch :${params}`)
             axios({
                 method: 'get',
                 url: 'http://openlibrary.org/search.json?limit=2',
@@ -99,7 +102,23 @@ var app = new Vue({
 
             })
 
-        }
+        },
+
+        randomHomepage: function () {
+            let randnum = Math.floor(Math.random() * this.subjects.length)
+            let params = {}
+            params["subject"] = this.subjects[randnum]
+            console.log(params)
+            axios({
+                method: 'get',
+                url: 'http://openlibrary.org/search.json?limit=2',
+                params: params
+            }).then(response => {
+                console.log('this is the response.data', response.data)
+                this.subjectResults = response.data
+            })
+
+        },
 
 
 
@@ -114,15 +133,9 @@ var app = new Vue({
     },
 
 
-
-
-
-
-
-
-
     created: function () {
         this.userSearch()
+        this.randomHomepage()
     },
     mounted: function () {
         this.csrf_token = document.querySelector("input[name=csrfmiddlewaretoken]").value

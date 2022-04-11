@@ -41,14 +41,36 @@
 
                    </li>
                 </ol>
+                <ol v-else>
+                    <li v-for="item in subjectResults.docs" :key="item.key">
+                        <h2> [[ item.title ]] </h2>
+                        <h4 v-for="author in item.author_name"> by [[author]] </h4>
+  
+  
+                        <hr>
+  
+                      <div class="img">
+                          <p v-for="insideIsbn in item.isbn" :key="insideIsbn"><a :href="`https://openlibrary.org/isbn/${insideIsbn}`" target="_blank">
+                              <img :src="`https://covers.openlibrary.org/b/isbn/${insideIsbn}-M.jpg`" /></a> <br><a :href="`https://openlibrary.org/isbn/${insideIsbn}`" target="_blank"> [[item.title]]</a>
+                              <br>   <span class="fa fa-star checked"></span>
+                              <span class="fa fa-star checked"></span>
+                              <span class="fa fa-star checked"></span>
+                              <span class="fa fa-star"></span>
+                              <span class="fa fa-star"></span>
+                              <br> <button @click="userSave(item, insideIsbn)">Save to Shelf</button> 
+                              
+                          </p>
+                          <br>
+                      </div>
+  
+                    
+                    </li>
+                </ol>
             </div>
             
 
-
-
 {% else %}
-<!-- /////////////////////////////////////////////////////////////////////////////////////////////// -->
-    {% comment %} <h1>Book Quest</h1> {% endcomment %}
+
     <a href="{% url 'login' %}">Log In</a> |
     <a href="{% url 'signup' %}">Sign Up</a>
     <label for="value">Search for a book by:</label>
@@ -76,6 +98,24 @@
                     <br>
                     
                 </div>
+            </li>
+        </ol>
+        <ol v-else>
+            <li v-for="item in subjectResults.docs" :key="item.key">
+                <h2> [[ item.title ]] </h2>
+                <h4 v-for="author in item.author_name"> by [[author]] </h4>
+
+
+                <hr>
+
+              <div class="img">
+                  <p v-for="insideIsbn in item.isbn" :key="insideIsbn"><a :href="`https://openlibrary.org/isbn/${insideIsbn}`" target="_blank">
+                      <img :src="`https://covers.openlibrary.org/b/isbn/${insideIsbn}-M.jpg`" /></a> <br><a :href="`https://openlibrary.org/isbn/${insideIsbn}`" target="_blank"> [[item.title]]</a>
+                  </p>
+                  <br>
+              </div>
+
+            
             </li>
         </ol>
     </div>
