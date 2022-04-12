@@ -13,6 +13,7 @@ var app = new Vue({
         subjects: ["python", "javascript", "html", "sci-fi"],
         subjectResults: {},
         fromUser: [],
+        // user: '',
 
 
     },
@@ -92,7 +93,8 @@ var app = new Vue({
                     "author": book.author_name,
                     "isbn": isbn,
                     "author": [],
-                    "subject": []
+                    "subject": [],
+                    "user": this.fromUser.id
                 }
 
             }).then(response => {
@@ -133,7 +135,14 @@ var app = new Vue({
 
             })
 
-        }
+        },
+
+        // loadUsers: function () {
+        //     axios({
+        //         method: 'get',
+        //         url: '/api/v1/users/'
+        //     }).then(response => this.users = response.data)
+        // },
 
 
 
@@ -151,6 +160,7 @@ var app = new Vue({
     created: function () {
         this.userSearch()
         this.randomHomepage()
+        this.loadCurrentUser()
     },
     mounted: function () {
         this.csrf_token = document.querySelector("input[name=csrfmiddlewaretoken]").value
