@@ -42,7 +42,9 @@ INSTALLED_APPS = [
 
     'users.apps.UsersConfig',
     'bookquest.apps.BookquestConfig',
-    'api.apps.ApiConfig' 
+    'api.apps.ApiConfig'
+    
+
 
 ]
 

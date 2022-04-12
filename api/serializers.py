@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from bookquest.models import Book, Author , Subject
+from django.contrib.auth import get_user_model
 
 
 class NestedAuthorSerializer(serializers.ModelSerializer):
@@ -16,7 +17,7 @@ class NestedSubjectSerializer(serializers.ModelSerializer):
 class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
-        fields = ('title','isbn',)
+        fields = ('title','isbn','user')
 
 class AuthorSerializer(serializers.ModelSerializer):
     # author_name = NestedSubjectSerializer(many=True, source='subject', read_only=True)
@@ -31,8 +32,8 @@ class SubjectSerializer(serializers.ModelSerializer):
         model = Subject
         fields = ('subject', 'author_name')
 
-# class UserSerializer(serializers.ModelSerializer):
-#     posts_detail = NestedAuthorSerializer(many=True, read_only=True, source=)
-#     class Meta: 
-#         model = 
-#         fields = ()
+class UserSerializer(serializers.ModelSerializer):
+    books_detail = BookSerializer(many=True, read_only=True, source='books')
+    class Meta: 
+        model = get_user_model()
+        fields = ('id', 'username', 'books_detail')

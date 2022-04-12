@@ -5,6 +5,11 @@
   Welcome {{ user.username }}
   <p><a href="{% url 'logout' %}">Log Out</a>   <a href="{% url 'home' %}">Home</a></p>
 <p> this is my shelf </p>
+
+
+{% comment %} <li v-for="item in fromUser" :key="item.key">
+  <h2> [[ item.title ]] </h2>
+</li> {% endcomment %}
   
   {% else %}
 

@@ -12,6 +12,7 @@ var app = new Vue({
         numberOfIsbn: 2,
         subjects: ["python", "javascript", "html", "sci-fi"],
         subjectResults: {},
+        fromUser: [],
 
 
     },
@@ -119,6 +120,20 @@ var app = new Vue({
             })
 
         },
+
+        loadCurrentUser: function () {
+            axios({
+                method: 'get',
+                url: '/api/v1/currentuser/',
+
+            }).then(response => {
+                console.log(`this is currentuser`, response.data)
+                this.fromUser = response.data
+                console.log(`from user`, this.fromUser)
+
+            })
+
+        }
 
 
 
