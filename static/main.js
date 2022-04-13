@@ -3,7 +3,9 @@ var app = new Vue({
     delimiters: ['[[', ']]'],
     data: {
         books: {},
-        userResults: {},
+        userResults: {
+            docs: {}
+        },
         userText: "",
         selectedType: "",
         // isbn: [],
