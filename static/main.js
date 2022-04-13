@@ -47,7 +47,7 @@ var app = new Vue({
             console.log(params['title'])
             axios({
                 method: 'get',
-                url: 'http://openlibrary.org/search.json?limit=5',
+                url: 'https://openlibrary.org/search.json?limit=5',
                 params: params
             }).then(response => {
                 console.log('this is the response.data', response.data)
@@ -59,7 +59,7 @@ var app = new Vue({
         getBook: function () {
             axios({
                 method: 'get',
-                url: 'http://openlibrary.org/search.json',
+                url: 'https://openlibrary.org/search.json',
 
             }).then(response => this.books = response.data)
         },
@@ -71,7 +71,7 @@ var app = new Vue({
             console.log(`this is userSearch :${params}`)
             axios({
                 method: 'get',
-                url: 'http://openlibrary.org/search.json?limit=2',
+                url: 'https://openlibrary.org/search.json?limit=2',
                 params: params
             }).then(response => {
                 console.log('this is the response.data', response.data)
@@ -115,7 +115,7 @@ var app = new Vue({
             console.log(params)
             axios({
                 method: 'get',
-                url: 'http://openlibrary.org/search.json?limit=2',
+                url: 'https://openlibrary.org/search.json?limit=2',
                 params: params
             }).then(response => {
                 console.log('this is the response.data', response.data)
