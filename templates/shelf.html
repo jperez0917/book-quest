@@ -6,10 +6,39 @@
   <p><a href="{% url 'logout' %}">Log Out</a>   <a href="{% url 'home' %}">Home</a></p>
 <p> this is my shelf </p>
 
+
+<ol>
   <li v-for="item in fromUser.books_detail" :key="item.key">
+    <!-- <h2> [[ item ]] </h2> -->
     <h2> [[ item.title ]] </h2>
+    <!-- <h2> [[ item.isbn ]] </h2> -->
+    <a :href="`https://openlibrary.org/isbn/${item.isbn}`" target="_blank">
+    <img :src="`https://covers.openlibrary.org/b/isbn/${item.isbn}-M.jpg`" /></a>
   </li>  
   
+
+  <!-- <div class="container">
+              <ol v-if="Object.keys(userResults.docs).length">
+                  <li v-for="item in fromUser.books_detail" :key="item.key">
+                      <h2> [[ item.title ]] </h2>
+                      <p>[[ item ]]</p>
+                      <h4 v-for="author in item.author_name"> by [[author]] </h4>
+
+
+                      <hr>
+
+                    <div class="img">
+                        <p v-for="insideIsbn in item.isbn" :key="insideIsbn"><a :href="`https://openlibrary.org/isbn/${insideIsbn}`" target="_blank">
+                          <img :src="`https://covers.openlibrary.org/b/isbn/${insideIsbn}-M.jpg`" /></a> <br><a :href="`https://openlibrary.org/isbn/${insideIsbn}`" target="_blank"> [[item.title]]</a>
+                        
+                            
+                        </p>
+                        <br>
+                    </div>
+
+                   </li> -->
+</ol>
+
   {% else %} 
 
 

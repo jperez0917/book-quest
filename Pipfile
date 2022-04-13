@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 django = "==3.2"
 djangorestframework = "*"
+django-on-heroku = "*"
+gunicorn = "*"
 
 [dev-packages]
 

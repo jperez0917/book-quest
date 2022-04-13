@@ -98,6 +98,7 @@ var app = new Vue({
                 }
 
             }).then(response => {
+                console.log(`from user!!!!!!!!!!!!`, this.fromUser)
                 this.userSaves = response.data
 
                 alert("you have saved an entry")
