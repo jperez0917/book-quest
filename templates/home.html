@@ -27,7 +27,7 @@
 
                     <div class="img">
                         <p v-for="insideIsbn in item.isbn" :key="insideIsbn"><a :href="`https://openlibrary.org/isbn/${insideIsbn}`" target="_blank">
-                            <img :src="`https://covers.openlibrary.org/b/isbn/${insideIsbn}-M.jpg`" /></a> <br><a :href="`https://openlibrary.org/isbn/${insideIsbn}`" target="_blank"> [[item.title]]</a>
+                            <img :src="`https://covers.openlibrary.org/b/isbn/${insideIsbn}-M.jpg`" alt="no image found" /></a> <br><a :href="`https://openlibrary.org/isbn/${insideIsbn}`" target="_blank"> [[item.title]]</a>
                             <br>   <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
@@ -51,7 +51,7 @@
   
                       <div class="img">
                           <p v-for="insideIsbn in item.isbn" :key="insideIsbn"><a :href="`https://openlibrary.org/isbn/${insideIsbn}`" target="_blank">
-                              <img :src="`https://covers.openlibrary.org/b/isbn/${insideIsbn}-M.jpg`" /></a> <br><a :href="`https://openlibrary.org/isbn/${insideIsbn}`" target="_blank"> [[item.title]]</a>
+                              <img :src="`https://covers.openlibrary.org/b/isbn/${insideIsbn}-M.jpg`" alt="no image found" /></a> <br><a :href="`https://openlibrary.org/isbn/${insideIsbn}`" target="_blank"> [[item.title]]</a>
                               <br>   <span class="fa fa-star checked"></span>
                               <span class="fa fa-star checked"></span>
                               <span class="fa fa-star checked"></span>

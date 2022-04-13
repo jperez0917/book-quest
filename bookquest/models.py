@@ -1,6 +1,3 @@
-from email.mime import image
-from operator import mod
-from django.conf import settings
 from django.db import models
 from bookquest_project.settings import AUTH_USER_MODEL
 
