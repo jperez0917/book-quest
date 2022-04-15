@@ -103,7 +103,7 @@ var app = new Vue({
                 console.log(`from user!!!!!!!!!!!!`, this.fromUser)
                 this.userSaves = response.data
 
-                alert("you have saved an entry")
+                alert("you have saved a book to your shelf")
                 console.log('here it is', this.userSaves)
 
             })
@@ -136,22 +136,25 @@ var app = new Vue({
                 this.fromUser = response.data
                 console.log(`from user`, this.fromUser)
 
+                // alert("no books are saved")
+
             })
 
         },
 
-        removeFromShelf: function (book) {
-            console.log(`Im trying to delete a book`, book)
-            console.log('im trying to delte book with id', book.id)
+        removeFromShelf: function (bookToDelete) {
+            console.log(`Im trying to delete a book`, bookToDelete)
+            console.log('im trying to delte book with id', bookToDelete.id)
             axios({
                 method: 'DELETE',
-                url: `/api/v1/books/${book.id}/`,
+                url: `/api/v1/books/${bookToDelete.id}/`,
                 headers: {
                     'X-CSRFToken': this.csrf_token
                 },
 
             }).then(response => {
                 console.log(`this is response from api`, response)
+                this.loadCurrentUser()
             })
 
         },
