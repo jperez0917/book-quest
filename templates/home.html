@@ -14,7 +14,7 @@
           </select>
           <input @keyup.enter="userSearch" type="text" placeholder="Search" v-model="userText"></input>
           <button @click="userSearch">Submit</button>
-          <button @click="titleSearch">TitleSearch</button>
+          <button @click="titleSearch">DemoSearch</button>
 
           <div class="container">
               <ol v-if="Object.keys(userResults.docs).length">

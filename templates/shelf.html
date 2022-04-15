@@ -7,12 +7,13 @@
 
 
 <ol>
-  <li v-for="item in fromUser.books_detail" :key="item.key">
+  <li v-for="book in fromUser.books_detail" :key="book.key">
     <!-- <h2> [[ item ]] </h2> -->
-    <h2> [[ item.title ]] </h2>
+    <h2> [[ book.title ]] </h2>
+    <button @click="removeFromShelf(book)">Delete</button>
     <!-- <h2> [[ item.isbn ]] </h2> -->
-    <a :href="`https://openlibrary.org/isbn/${item.isbn}`" target="_blank">
-    <img :src="`https://covers.openlibrary.org/b/isbn/${item.isbn}-M.jpg`" /></a>
+    <a :href="`https://openlibrary.org/isbn/${book.isbn}`" target="_blank">
+    <img :src="`https://covers.openlibrary.org/b/isbn/${book.isbn}-M.jpg`" /></a>
   </li>  
   
 

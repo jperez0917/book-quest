@@ -140,6 +140,22 @@ var app = new Vue({
 
         },
 
+        removeFromShelf: function (book) {
+            console.log(`Im trying to delete a book`, book)
+            console.log('im trying to delte book with id', book.id)
+            axios({
+                method: 'DELETE',
+                url: `/api/v1/books/${book.id}/`,
+                headers: {
+                    'X-CSRFToken': this.csrf_token
+                },
+
+            }).then(response => {
+                console.log(`this is response from api`, response)
+            })
+
+        },
+
         // loadUsers: function () {
         //     axios({
         //         method: 'get',

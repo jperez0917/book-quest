@@ -17,7 +17,7 @@ class NestedSubjectSerializer(serializers.ModelSerializer):
 class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
-        fields = ('title','isbn','user')
+        fields = ('title','isbn','user', 'id')
 
 class AuthorSerializer(serializers.ModelSerializer):
     # author_name = NestedSubjectSerializer(many=True, source='subject', read_only=True)

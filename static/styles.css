@@ -5,22 +5,25 @@
 
 body {
 
-    background-color: burlywood;
+    background-color: rgb(2, 138, 97);
 }
 
 h1 {
     font-family: 'Permanent Marker', cursive;
     padding-left: 15px;
+    color: rgb(0, 0, 0);
+    font-size: 45px;
 }
 
 h2 {
     font-family: 'Source Serif Pro', serif;
+    color: rgb(0, 0, 0);
 
 }
 
 a {
     font-family: 'Source Serif Pro', serif;
-    color: black;
+    color: rgb(0, 0, 0);
 }
 
 .img {
@@ -42,10 +45,3 @@ hr {
 
     color: black;
 }
-
-/* p {
-    width: 180px;
-    height: 273px;
-    display: flex;
-    flex-wrap: wrap;
-} */
