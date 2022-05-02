@@ -14,7 +14,7 @@
           </select>
           <input @keyup.enter="userSearch" type="text" placeholder="Search" v-model="userText"></input>
           <button @click="userSearch">Submit</button>
-          <button @click="titleSearch">DemoSearch</button>
+          {% comment %} <button @click="titleSearch">DemoSearch</button> {% endcomment %}
 
           <div class="container">
               <ol v-if="Object.keys(userResults.docs).length">
@@ -41,7 +41,7 @@
 
                    </li>
                 </ol>
-                <ol v-else>
+                 <ol v-else>
                     <li v-for="item in subjectResults.docs" :key="item.key">
                         <h2> [[ item.title ]] </h2>
                         <h4 v-for="author in item.author_name"> by [[author]] </h4>
@@ -65,7 +65,7 @@
   
                     
                     </li>
-                </ol>
+                </ol> 
             </div>
             
 
@@ -82,7 +82,7 @@
     </select>
     <input @keyup.enter="userSearch" type="text" placeholder="Search" v-model="userText"></input>
     <button @click="userSearch">Submit</button>
-    <button @click="titleSearch">TitleSearch</button>
+    {% comment %} <button @click="titleSearch">TitleSearch</button> {% endcomment %}
 
     <div class="container">
         <ol v-if="Object.keys(userResults.docs).length">
@@ -94,7 +94,7 @@
 
                 <div class="img">
                     <p v-for="insideIsbn in item.isbn" :key="insideIsbn"><a :href="`https://openlibrary.org/isbn/${insideIsbn}`" target="_blank">
-                        <img :src="`https://covers.openlibrary.org/b/isbn/${insideIsbn}-M.jpg`" /></a> <br><a :href="`https://openlibrary.org/isbn/${insideIsbn}`" target="_blank"> [[item.title]]</a></p>
+                        <img :src="`https://covers.openlibrary.org/b/isbn/${insideIsbn}-M.jpg`" /></a> <br><a :href="`https://openlibrary.org/isbn/${insideIsbn}`" target="_blank"> [[item.title]]</p></a>
                     <br>
                     
                 </div>

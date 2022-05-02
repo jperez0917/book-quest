@@ -12,7 +12,7 @@ var app = new Vue({
         userSaves: [],
         csrf_token: "",
         numberOfIsbn: 2,
-        subjects: ["python", "javascript", "html", "sci-fi"],
+        subjects: ["javascript", "html", "sci-fi"],
         subjectResults: {},
         fromUser: [],
         // user: '',
